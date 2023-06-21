@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confirmation Pop-up</title>
+  <style>
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.3s;
+    }
+
+    .popup {
+      background-color: #FFFFFF;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .popup-message {
+      margin-bottom: 10px;
+    }
+
+    .popup-buttons {
+      text-align: center;
+    }
+
+    .popup-buttons button {
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="showConfirmationPopup()">Show Confirmation</button>
+
+  <div id="confirmationPopup" class="overlay">
+    <div class="popup">
+      <p class="popup-message">Are you sure you want to proceed?</p>
+      <div class="popup-buttons">
+        <button onclick="proceed()">Yes</button>
+        <button onclick="cancel()">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showConfirmationPopup() {
+      var popup = document.getElementById("confirmationPopup");
+      popup.style.visibility = "visible";
+      popup.style.opacity = "1";
+    }
+
+    function proceed() {
+      // Code to execute if user confirms (proceeds)
+      alert("Confirmed!");
+      hideConfirmationPopup();
+    }
+
+    function cancel() {
+      // Code to execute if user cancels
+      alert("Cancelled!");
+      hideConfirmationPopup();
+    }
+
+    function hideConfirmationPopup() {
+      var popup = document.getElementById("confirmationPopup");
+      popup.style.visibility = "hidden";
+      popup.style.opacity = "0";
+    }
+  </script>
+</body>
+</html>

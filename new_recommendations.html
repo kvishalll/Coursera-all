@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recommendations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F2F2F2;
+    }
+
+    .recommendation {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .recommendation h3 {
+      margin-top: 0;
+      color: #333333;
+    }
+
+    .recommendation p {
+      color: #666666;
+    }
+
+    .recommendation .author {
+      margin-top: 10px;
+      font-style: italic;
+      color: #999999;
+    }
+  </style>
+</head>
+<body>
+  <div id="recommendationsContainer">
+    <div class="recommendation">
+      <h3>Recommendation 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu mauris eget turpis luctus finibus. Mauris ut neque gravida, finibus nibh id, semper sapien. Sed id justo sit amet urna convallis congue at vel turpis.</p>
+      <p class="author">- John Doe</p>
+    </div>
+
+    <div class="recommendation">
+      <h3>Recommendation 2</h3>
+      <p>Integer interdum ligula eu est gravida, id consectetur ipsum venenatis. Vivamus tempor pulvinar enim id feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+      <p class="author">- Jane Smith</p>
+    </div>
+
+    <div class="recommendation">
+      <h3>Recommendation 3</h3>
+      <p>Proin pulvinar augue eget ligula blandit, sed sagittis turpis euismod. Donec tincidunt felis eu sapien volutpat fermentum. Morbi a turpis et velit venenatis pharetra. Sed euismod gravida dui, sed tincidunt ante venenatis eget.</p>
+      <p class="author">- David Johnson</p>
+    </div>
+  </div>
+
+  <form id="recommendationForm">
+    <h3>Add a New Recommendation</h3>
+    <label for="title">Title:</label>
+    <input type="text" id="title" required>
+
+    <label for="text">Text:</label>
+    <textarea id="text" required></textarea>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" required>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("recommendationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Get input values
+      var title = document.getElementById("title").value;
+      var text = document.getElementById("text").value;
+      var author = document.getElementById("author").value;
+
+      // Create new recommendation element
+      var newRecommendation = document.createElement("div");
+      newRecommendation.classList.add("recommendation");
+
+      // Create HTML structure for the new recommendation
+      newRecommendation.innerHTML = `
+        <h3>${title}</h3>
+        <p>${text}</p>
+        <p class="author">- ${author}</p>
+      `;
+
+      // Add the new recommendation to the container
+      var recommendationsContainer = document.getElementById("recommendationsContainer");
+      recommendationsContainer.appendChild(newRecommendation);
+
+      // Reset the form
+      document.getElementById("recommendationForm").reset();
+    });
+  </script>
+</body>
+</html>
